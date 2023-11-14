@@ -1,0 +1,26 @@
+.contactUsSection{
+    background-color: #1D2D42;
+    color: white;
+}
+.contactUsSection .title{
+    font-weight: 100 !important;
+}
+.contactUsSection form label{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+}
+.contactUsSection form input,
+.contactUsSection form textarea{
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white ;
+}
+.contactUsSection form input:focus,
+.contactUsSection form textarea:focus{
+    outline: none;
+}
+.contactUsSection form textarea{
+    resize: none;
+}

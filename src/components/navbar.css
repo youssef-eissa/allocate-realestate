@@ -1,0 +1,26 @@
+.navBar{
+    position: relative;
+    background-color: #0B2447;
+}
+.LogoBox {
+    height: 80px;
+    text-decoration: none;
+    color: white;
+}
+.CompanyName span:nth-child(1){
+    font-family: 'Kenia', sans-serif;
+    font-size: 25px;
+}
+.CompanyName span:nth-child(2) {
+font-family: 'Orbitron', sans-serif;
+font-size: 12px;
+}
+.toPage{
+    color: white;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    transition: 0.3s;
+}
+.toPage:hover{
+    color: crimson;
+}

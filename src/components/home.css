@@ -1,0 +1,26 @@
+.homeLandingImg{
+    height: 700px;
+}
+.homeLadingText{
+    color: white;
+}
+.homeLadingText h1{
+    font-family: 'Oswald', sans-serif;
+    font-size: 72px;
+}
+.homeLadingText span{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    letter-spacing: 3px;
+    font-size: 18px;
+}
+
+.BuyAndRent .ImgCon{
+    height: 400px;
+}
+.BuyAndRent .toPage {
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 72px;
+    font-weight: 500;
+}
