@@ -29,10 +29,10 @@ return (
                     </div>
                 </div>
                 <div className='col-4 d-flex flex-column align-items-center '>
-                    <Link to='/' className='col-12 toPage mb-2'>Home</Link>
-                    <Link to='/properties' className='col-12 mb-2 toPage'>Properties</Link>
-                    <Link to='/about' className='col-12 toPage mb-2'>About</Link>
-                    <Link to='/contact' className='col-12 toPage'>Contact</Link>
+                    <Link onClick={()=>window.scrollTo(0,0)} to='/' className='col-12 toPage mb-2'>Home</Link>
+                    <Link onClick={()=>window.scrollTo(0,0)} to='/properties' className='col-12 mb-2 toPage'>Properties</Link>
+                    <Link onClick={()=>window.scrollTo(0,0)} to='/about' className='col-12 toPage mb-2'>About</Link>
+                    <Link onClick={()=>window.scrollTo(0,0)} to='/contact' className='col-12 toPage'>Contact</Link>
                 </div>
                 <div className='col-4 d-flex flex-column align-items-center'>
                     <div className='col-12 d-flex'>

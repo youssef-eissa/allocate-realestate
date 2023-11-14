@@ -1,0 +1,24 @@
+.about .headAbout{
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    position: relative;
+    text-transform: uppercase;
+}
+.about .headAbout::before{
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 3px;
+    background-color: crimson;
+    top: 0;
+    left: -10px;
+}
+.about .textbox p{
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    color: #2B2B2B;
+    font-weight: 100;
+}
+.about .acheivements{
+    background-color: whitesmoke;
+}
