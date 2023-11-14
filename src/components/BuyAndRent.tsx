@@ -6,9 +6,17 @@ import { useInView } from 'react-intersection-observer';
 import { useAnimation } from 'framer-motion';
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { apiData } from './types/apiTypes';
+import { useDispatch } from 'react-redux';
+import { resetProperties, setProperties, setPurpose } from './redux/properties';
 
+type TBuyAndRent={
+    ForSale:apiData[]
+    ForRent:apiData[]
+}
 
-function BuyAndRent() {
+function BuyAndRent({ ForSale, ForRent }: TBuyAndRent) {
+    const dispatch=useDispatch()
     const { ref, inView } = useInView({
         threshold: 0.2
     });
@@ -26,8 +34,20 @@ function BuyAndRent() {
         } else {
             animation.start({ x: '-100vw' })
         }
-        
-    }, [inView,animation])
+    }, [inView, animation])
+
+    function handleBuy(){
+        dispatch(setPurpose('Buy'))
+        window.scrollTo(0, 0)
+        dispatch(resetProperties())
+        dispatch(setProperties(ForSale))
+    }
+        function handleRent(){
+        dispatch(setPurpose('Rent'))
+        window.scrollTo(0, 0)
+        dispatch(resetProperties())
+        dispatch(setProperties(ForRent))
+    }
 
 return (
     <div ref={ref} className='container-fluid p-0'>
@@ -40,12 +60,12 @@ return (
                     <div className='ImgCon col-6 justify-content-center position-relative d-flex align-items-center'>
                         <img src={butImg} alt='img' className='img-fluid w-100 h-100 position-absolute z-1' />
                         <div style={{ backgroundColor: 'rgb(25 55 109 / 43%)' }} className='col-12 position-absolute w-100 h-100 z-2'></div>
-                        <Link to='/buy' className='col-3 position-absolute text-center toPage z-3'>Buy</Link>
+                        <Link onClick={()=>handleBuy()} to='/properties' className='col-3 position-absolute text-center toPage z-3'>Buy</Link>
                     </div>
                         <div className='ImgCon col-6 position-relative d-flex align-items-center justify-content-center'>
                             <img src={rentImg} alt='img' className='img-fluid w-100 h-100 position-absolute z-1' />
                             <div style={{ backgroundColor: '#ff00004a' }} className='col-12 position-absolute w-100 h-100 z-2'></div>
-                            <Link to='/rent' className='col-3 toPage position-absolute text-center z-3'>Rent</Link>
+                            <Link onClick={()=>handleRent()} to='/properties' className='col-3 toPage position-absolute text-center z-3'>Rent</Link>
                     </div>
                 </div>
             </WrapperSection>

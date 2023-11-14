@@ -1,31 +1,34 @@
-import { WrapperSection } from "../StyledComponents/Section.style"
-import { apiData } from "./types/apiTypes"
-import './Newproperties.css'
-import { Link } from "react-router-dom"
+import { StyledPageHead } from '../StyledComponents/PageHead.style'
+import headBG from '../assets/propertiesImg.webp'
+import { motion } from 'framer-motion'
+import { useSelector } from 'react-redux'
+import { apiData } from './types/apiTypes'
 import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
 import BedOutlinedIcon from '@mui/icons-material/BedOutlined';
 import BathtubOutlinedIcon from '@mui/icons-material/BathtubOutlined';
-import { StyledLink } from "../StyledComponents/Link.style";
+import { Link } from 'react-router-dom'
 
+function Properties() {
+    const purpose = useSelector((state: { properties: { purpose: string } }) => state.properties.purpose)
+    const PropertiesArray = useSelector((state: { properties: { array: apiData[] } }) => state.properties.array)
 
-
-type TNewProperties = {
-    ForSale: apiData[]
-    isFetching: boolean
-    isSuccess:boolean
-}
-function SaleNewProperties({ ForSale, isFetching, isSuccess }: TNewProperties) {
- 
-    return (
-        <div  className='container-fluid p-0 NewProperties'>
-            <div  className="row">
-                <WrapperSection  className="col-12 d-flex flex-column justify-content-center">
-                    <div className="col-12 text-center SectionTitle mb-5">
-                        <div className="title col-12">NEW PROPERTIES</div>
-                        <div className="col-12 purposeText text-center">For Sale</div>
-                    </div>
-                    <div  className="col-12 d-flex gap-5 justify-content-center flex-wrap">
-                        {isSuccess && ForSale.slice(0, 6).map((item : apiData ) => {
+return (
+    <motion.div
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 2,type: "spring" }}
+        className='container-fluid'>
+        <div className='row'>
+            <StyledPageHead className='col-12 p-0 d-flex flex-column justify-content-center align-items-center' background={headBG}>
+                <div className="overlay"></div>
+                <div className='col-12 title text-center'>OUR EXCLUSIVE PROPERTIES</div>
+                <h2 className='col-12 text-center'>{purpose }</h2>
+            </StyledPageHead>
+        </div>
+        <div className='row'>
+            <div  className="col-12 d-flex gap-5 my-5 justify-content-center flex-wrap">
+                        { PropertiesArray.map((item : apiData ) => {
                             return <Link style={{ textDecoration: 'none' ,color:'black'}} key={item.id} to='/' className="col-3 d-flex flex-column align-items-center ">
                                 <div  className="ImgCon rounded overflow-hidden">
                                     <img className="img-fluid h-100 w-100" alt="img" src={item.coverPhoto.url } />
@@ -59,12 +62,9 @@ function SaleNewProperties({ ForSale, isFetching, isSuccess }: TNewProperties) {
                             </Link>
                         })}
                     </div>
-
-                <StyledLink className="col-1 p-2 d-flex justify-content-center align-items-center rounded align-self-center mt-5"  to='/'>Show more</StyledLink>
-                </WrapperSection>
-            </div>
-    </div>
-    )
+        </div>
+    </motion.div>
+)
 }
 
-export default SaleNewProperties
+export default Properties

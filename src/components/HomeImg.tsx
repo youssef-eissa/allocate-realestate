@@ -1,10 +1,18 @@
 import { StyledLink } from '../StyledComponents/Link.style'
 import HeadHomeImage from '../assets/Villa-for-Sale-in-Damac Lagoons-pic-1-31501.png'
 import { TypeAnimation } from 'react-type-animation';
+import {  useDispatch } from 'react-redux'
+import { apiData } from './types/apiTypes'
+import { setPurpose, resetProperties, setProperties } from './redux/properties'
 
 
+type THomeImg={
+    ForSale:apiData[]
+    ForRent:apiData[]
+}
 
-function HomeImg() {
+function HomeImg({ForSale,ForRent}:THomeImg) {
+const dispatch=useDispatch()
 
     function Texttype(){
         return (
@@ -22,6 +30,14 @@ function HomeImg() {
         />
         )
     }
+    function handlePurpose() {
+    const allProperties = ForSale.concat(ForRent)
+        
+        dispatch(setPurpose('Properties'))
+        window.scrollTo(0, 0)
+        dispatch(resetProperties())
+        dispatch(setProperties(allProperties))
+    }
 
 return (
     <div  className="container-fluid p-0">
@@ -34,7 +50,7 @@ return (
             <Texttype/>
                     </div>
                     <span className='text-center col-12'>EXCLUSIVELY BY Allocate</span>
-                    <StyledLink className='col-2 rounded p-2 text-center mt-5' to='/properties'>Explore</StyledLink>
+                    <StyledLink onClick={()=>handlePurpose()} className='col-2 rounded p-2 text-center mt-5' to='/properties'>Explore</StyledLink>
                 </div>
             </div>
         </div>

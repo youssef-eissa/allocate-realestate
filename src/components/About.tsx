@@ -76,7 +76,7 @@ return (
                 </div>
                  <div className='col-3 d-flex my-5 flex-column align-items-center'>
                     <HomeOutlinedIcon sx={{ fontSize: '4rem' }} className='col-12 mb-2' />
-                    <CountUp suffix='+'  style={{ fontFamily: 'Oswald, sans-serif', fontSize: '1.5rem' }} className='col-12 text-center' start={0} end={550} duration={4} delay={0} enableScrollSpy={true} />
+                    <CountUp  suffix='+'  style={{ fontFamily: 'Oswald, sans-serif', fontSize: '1.5rem' }} className='col-12 text-center' start={0} end={550} duration={4} delay={0} enableScrollSpy={true} />
                     <div className='col-12 text-center'>Properties</div>
                 </div>
             </div>

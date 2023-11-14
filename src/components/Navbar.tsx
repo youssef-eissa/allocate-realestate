@@ -2,8 +2,21 @@ import './navbar.css'
 import logo from '../assets/theLogo.jpeg'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
-import { useEffect, useState,useRef } from 'react'
-function Navbar() {
+import { useEffect, useState, useRef } from 'react'
+import { useDispatch } from 'react-redux'
+import { setPurpose, resetProperties, setProperties } from './redux/properties'
+import { apiData } from './types/apiTypes'
+
+
+type TNavBar={
+    ForSale:apiData[]
+    ForRent:apiData[]
+    }
+function Navbar({ ForSale, ForRent }: TNavBar) {
+    const allProperties = ForSale.concat(ForRent)
+    
+    
+const dispatch=useDispatch()
     const location = useLocation()
     const ref=useRef<HTMLDivElement>(null)
     const Progref=useRef<HTMLDivElement>(null)
@@ -42,6 +55,12 @@ function Navbar() {
             window.removeEventListener('scroll', handleScrollProgressBar)
         }
     })
+    function handlePurpose(){
+        dispatch(setPurpose('Properties'))
+        window.scrollTo(0, 0)
+        dispatch(resetProperties())
+        dispatch(setProperties(allProperties))
+    }
 return (
     <div ref={ref} className='container-fluid navBar py-2'>
         <div  className='row d-flex justify-content-center'>
@@ -55,7 +74,7 @@ return (
                 </Link>
                 <div className='col-6 d-flex justify-content-around align-items-center'>
                     <Link onClick={()=>window.scrollTo(0,0)} style={location.pathname==='/'?{color:'crimson'}:{color:'white'}} to='/' className='col-3 toPage'>Home</Link>
-                    <Link onClick={()=>window.scrollTo(0,0)} style={location.pathname==='/properties'?{color:'crimson'}:{color:'white'}} to='/properties' className='col-3 toPage'>Properties</Link>
+                    <Link onClick={() => handlePurpose()} style={location.pathname==='/properties'?{color:'crimson'}:{color:'white'}} to='/properties' className='col-3 toPage'>Properties</Link>
                     <Link onClick={()=>window.scrollTo(0,0)} style={location.pathname==='/about'?{color:'crimson'}:{color:'white'}} to='/about' className='col-3 toPage'>About</Link>
                     <Link onClick={()=>window.scrollTo(0,0)} style={location.pathname==='/contact'?{color:'crimson'}:{color:'white'}} to='/contact' className='col-3 toPage'>Contact</Link>
                 </div>

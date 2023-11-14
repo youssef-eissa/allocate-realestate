@@ -27,8 +27,8 @@ return (
         exit={{ opacity: 0 }}
         transition={{ duration: 2,type: "spring" }}
         className="container-fluid">
-        <HomeImg/>
-        <BuyAndRent/>
+        <HomeImg ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]}/>
+        <BuyAndRent ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]}/>
         <SaleNewProperties ForSale={ForSale}  isFetching={isFetching} isSuccess={isSuccess} />
         <RentNewProperties ForRentSuccess={ForRentSuccess} ForRent={ForRent} />
         <Testimonials />

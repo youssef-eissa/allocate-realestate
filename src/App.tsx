@@ -9,6 +9,7 @@ import ContactUsSection from "./components/ContactUsSection";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Properties from "./components/Properties";
 
 
 function App() {
@@ -47,11 +48,12 @@ const {data:ForSale,isFetching,isSuccess}=useQuery({
 
   return (
     <div className="container-fluid p-0">
-        <Navbar/>
+        <Navbar ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]} />
       <Routes>
         <Route path="/" element={<Home ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]} isFetching={isFetching} isSuccess={isSuccess} ForRentSuccess={ForRentSuccess} />} />
         <Route path='/about' element={<About/> } />
-        <Route path='/contact' element={<Contact/> } />
+        <Route path='/contact' element={<Contact />} />
+        <Route path="/properties" element={<Properties />}/>
       </Routes>
       <ContactUsSection />
       <Footer/>

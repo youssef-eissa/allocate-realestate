@@ -23,7 +23,7 @@ return (
                         <div className="col-12 purposeText text-center">For Rent</div>
                     </div>
                     <div  className="col-12 d-flex gap-5 justify-content-center flex-wrap">
-                        {ForRentSuccess && ForRent.splice(0, 6).map((item : apiData ) => {
+                        {ForRentSuccess && ForRent.slice(0, 6).map((item : apiData ) => {
                             return <Link style={{ textDecoration: 'none' ,color:'black'}} key={item.id} to='/' className="col-3 d-flex flex-column align-items-center ">
                                 <div  className="ImgCon rounded overflow-hidden">
                                     <img className="img-fluid h-100 w-100" alt="img" src={item.coverPhoto.url } />
