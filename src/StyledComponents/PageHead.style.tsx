@@ -25,6 +25,7 @@ position: relative;
     position:relative;
     z-index: 1;
     font-weight:100;
+    text-transform: uppercase;
 }
 & h2{
     font-family: 'Oswald', sans-serif;

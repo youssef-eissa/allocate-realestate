@@ -8,6 +8,7 @@ import { Triangle } from "react-loader-spinner";
 import ContactUsSection from "./components/ContactUsSection";
 import Footer from "./components/Footer";
 import About from "./components/About";
+import Contact from "./components/Contact";
 
 
 function App() {
@@ -50,6 +51,7 @@ const {data:ForSale,isFetching,isSuccess}=useQuery({
       <Routes>
         <Route path="/" element={<Home ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]} isFetching={isFetching} isSuccess={isSuccess} ForRentSuccess={ForRentSuccess} />} />
         <Route path='/about' element={<About/> } />
+        <Route path='/contact' element={<Contact/> } />
       </Routes>
       <ContactUsSection />
       <Footer/>

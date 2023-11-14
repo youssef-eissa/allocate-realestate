@@ -7,6 +7,7 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 function Footer() {
 return (
     <div className="container-fluid  footer ">
@@ -25,7 +26,8 @@ return (
                     <div className='col-10 d-flex mt-2'>
                         <Link target='_blank' to='https://www.facebook.com/allocate.eg'> <FacebookOutlinedIcon className='rounded' sx={{ fontSize: "30px", color: "white" ,'&:hover':{color:'#4267B2',backgroundColor:'white'}}} /></Link>
                         <Link target='_blank' to='https://www.instagram.com/allocate_eg/'> <InstagramIcon className='ms-3 rounded' sx={{ fontSize: "30px", color: "white", '&:hover': { color: '#d62976',backgroundColor:'white' } }} /></Link>
-                        <Link target='_blank' to=''> <WhatsAppIcon className='ms-3 rounded' sx={{ fontSize: "30px", color: "white",'&:hover':{color:'#25D366',backgroundColor:'white'} }} /></Link>
+                        <Link target='_blank' to=''> <WhatsAppIcon className='ms-3 rounded' sx={{ fontSize: "30px", color: "white", '&:hover': { color: '#25D366', backgroundColor: 'white' } }} /></Link>
+                        <Link target='_blank' to='https://www.linkedin.com/company/allocate-real-estate-consultancy/'> <LinkedInIcon className='ms-3 rounded' sx={{ fontSize: "30px", color: "white",'&:hover':{color:'#0077b5',backgroundColor:'white'} }} /></Link>
                     </div>
                 </div>
                 <div className='col-4 d-flex flex-column align-items-center '>
