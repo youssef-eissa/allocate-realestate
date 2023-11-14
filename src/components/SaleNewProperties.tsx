@@ -8,17 +8,18 @@ import BathtubOutlinedIcon from '@mui/icons-material/BathtubOutlined';
 import { StyledLink } from "../StyledComponents/Link.style";
 
 
+
 type TNewProperties = {
     ForSale: apiData[]
     isFetching: boolean
     isSuccess:boolean
 }
 function SaleNewProperties({ ForSale, isFetching, isSuccess }: TNewProperties) {
-
+ 
     return (
-        <div className='container-fluid p-0 NewProperties'>
-            <div className="row">
-                <WrapperSection className="col-12 d-flex flex-column justify-content-center">
+        <div  className='container-fluid p-0 NewProperties'>
+            <div  className="row">
+                <WrapperSection  className="col-12 d-flex flex-column justify-content-center">
                     <div className="col-12 text-center SectionTitle mb-5">
                         <div className="title col-12">NEW PROPERTIES</div>
                         <div className="col-12 purposeText text-center">For Sale</div>

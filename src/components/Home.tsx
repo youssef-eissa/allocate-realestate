@@ -6,6 +6,8 @@ import { apiData } from './types/apiTypes'
 import RentNewProperties from './RentNewProperties'
 import Testimonials from './Testimonials'
 import CompanyInfo from './CompanyInfo'
+import { motion } from 'framer-motion'
+
 
 
 
@@ -16,16 +18,22 @@ type THome = {
     isSuccess: boolean
     ForRentSuccess: boolean
 }
-function Home({ForSale,isFetching,isSuccess,ForRent,ForRentSuccess}:THome) {
+function Home({ ForSale, isFetching, isSuccess, ForRent, ForRentSuccess }: THome) {
+   
 return (
-    <div className="container-fluid">
+    <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 2,type: "spring" }}
+        className="container-fluid">
         <HomeImg/>
         <BuyAndRent/>
         <SaleNewProperties ForSale={ForSale}  isFetching={isFetching} isSuccess={isSuccess} />
         <RentNewProperties ForRentSuccess={ForRentSuccess} ForRent={ForRent} />
         <Testimonials />
         <CompanyInfo/>
-    </div>
+    </motion.div>
 )
 }
 

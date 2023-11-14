@@ -2,10 +2,36 @@ import butImg from '../assets/buyImg.jpeg'
 import rentImg from '../assets/rentImg.jpeg'
 import { Link } from 'react-router-dom'
 import { WrapperSection } from '../StyledComponents/Section.style'
+import { useInView } from 'react-intersection-observer';
+import { useAnimation } from 'framer-motion';
+import { useEffect } from 'react';
+import { motion } from 'framer-motion';
+
+
 function BuyAndRent() {
+    const { ref, inView } = useInView({
+        threshold: 0.2
+    });
+    const animation = useAnimation();
+    useEffect(() => {
+        if (inView) {
+            animation.start({
+                x: 0,
+                transition: {
+                    duration: 1.5,
+                    type: 'spring',
+                    bounce: 0.3
+                }
+            })
+        } else {
+            animation.start({ x: '-100vw' })
+        }
+        
+    }, [inView,animation])
+   
 return (
-    <div className='container-fluid p-0'>
-        <div className='row BuyAndRent'>
+    <div ref={ref} className='container-fluid p-0'>
+        <motion.div animate={animation} className='row BuyAndRent'>
                 <WrapperSection className='col-12 d-flex flex-column justify-content-center '>
                 <div className='col-12 text-center SectionTitle mb-5'>
                     <div className='title col-12'>WHAT ARE YOU LOOKING FOR?</div>
@@ -23,7 +49,7 @@ return (
                     </div>
                 </div>
             </WrapperSection>
-        </div>
+        </motion.div>
        
     </div>
 )

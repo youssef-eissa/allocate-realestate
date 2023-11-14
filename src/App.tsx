@@ -7,7 +7,7 @@ import { apiData } from "./components/types/apiTypes";
 import { Triangle } from "react-loader-spinner";
 import ContactUsSection from "./components/ContactUsSection";
 import Footer from "./components/Footer";
-
+import About from "./components/About";
 
 
 function App() {
@@ -18,10 +18,8 @@ const {data:ForSale,isFetching,isSuccess}=useQuery({
   refetchIntervalInBackground: false,
   refetchOnWindowFocus: false,
     staleTime: 1000 * 6000,
-
-
 })
-  
+
   const {data:ForRent ,isFetching:ForRentFetching,isSuccess:ForRentSuccess} = useQuery({
     queryKey: ["ForRent"],
     queryFn: ForRentFetch,
@@ -29,8 +27,10 @@ const {data:ForSale,isFetching,isSuccess}=useQuery({
     refetchIntervalInBackground: false,
     refetchOnWindowFocus: false,
     staleTime: 1000 * 6000,
+
     
   })
+  
 
   if (isFetching||ForRentFetching) {
     return <div className="container-fluid">
@@ -42,13 +42,14 @@ const {data:ForSale,isFetching,isSuccess}=useQuery({
     </div>
   }
 
-  
+
 
   return (
     <div className="container-fluid p-0">
         <Navbar/>
       <Routes>
-        <Route path="/" element={<Home ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]} isFetching={isFetching} isSuccess={isSuccess} ForRentSuccess={ForRentSuccess} />}/>
+        <Route path="/" element={<Home ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]} isFetching={isFetching} isSuccess={isSuccess} ForRentSuccess={ForRentSuccess} />} />
+        <Route path='/about' element={<About/> } />
       </Routes>
       <ContactUsSection />
       <Footer/>

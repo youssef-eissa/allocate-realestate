@@ -1,6 +1,24 @@
 .navBar{
     position: relative;
     background-color: #0B2447;
+    z-index: 1000;
+    transition: 0.3s;
+}
+.scrollBarBG{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: whitesmoke;
+}
+.scrollBarBGProgress{
+    position: absolute;
+    bottom: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: #0B2447;
 }
 .LogoBox {
     height: 80px;
