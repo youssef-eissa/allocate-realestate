@@ -28,7 +28,7 @@ function BuyAndRent() {
         }
         
     }, [inView,animation])
-   
+
 return (
     <div ref={ref} className='container-fluid p-0'>
         <motion.div animate={animation} className='row BuyAndRent'>
