@@ -8,7 +8,25 @@ import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-function Footer() {
+import { useDispatch } from 'react-redux'
+import { setPurpose, resetProperties, setProperties } from './redux/properties'
+import { apiData } from './types/apiTypes';
+
+type TFooter={
+    ForSale:apiData[]
+    ForRent:apiData[]
+    
+}
+function Footer({ ForSale, ForRent }: TFooter) {
+    const allProperties = ForSale.concat(ForRent)
+
+const dispatch=useDispatch()
+ function handlePurpose(){
+        dispatch(setPurpose('Properties'))
+        window.scrollTo(0, 0)
+        dispatch(resetProperties())
+        dispatch(setProperties(allProperties))
+    }
 return (
     <div className="container-fluid  footer ">
         <div className="row ">
@@ -32,7 +50,7 @@ return (
                 </div>
                 <div className='col-4 d-flex flex-column align-items-center '>
                     <Link onClick={()=>window.scrollTo(0,0)} to='/' className='col-12 toPage mb-2'>Home</Link>
-                    <Link onClick={()=>window.scrollTo(0,0)} to='/properties' className='col-12 mb-2 toPage'>Properties</Link>
+                    <Link onClick={()=>handlePurpose()} to='/properties' className='col-12 mb-2 toPage'>Properties</Link>
                     <Link onClick={()=>window.scrollTo(0,0)} to='/about' className='col-12 toPage mb-2'>About</Link>
                     <Link onClick={()=>window.scrollTo(0,0)} to='/contact' className='col-12 toPage'>Contact</Link>
                 </div>

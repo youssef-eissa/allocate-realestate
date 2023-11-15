@@ -6,6 +6,10 @@ import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlin
 import BedOutlinedIcon from '@mui/icons-material/BedOutlined';
 import BathtubOutlinedIcon from '@mui/icons-material/BathtubOutlined';
 import { StyledLink } from "../StyledComponents/Link.style";
+import { setProperty } from "./redux/property";
+import { useDispatch } from "react-redux";
+import { setPurpose, resetProperties, setProperties } from './redux/properties'
+
 
 
 type TForRent = {
@@ -13,7 +17,18 @@ type TForRent = {
     ForRentSuccess: boolean
    
 }
-function RentNewProperties({ForRent,ForRentSuccess}:TForRent) {
+function RentNewProperties({ ForRent, ForRentSuccess }: TForRent) {
+    const dispatch=useDispatch()
+    function handlePropertyClick(item: apiData) {
+        dispatch(setProperty(item))
+        window.scrollTo(0, 0)
+    }
+    function handlePurpose(){
+        dispatch(setPurpose('Rent'))
+        window.scrollTo(0, 0)
+        dispatch(resetProperties())
+        dispatch(setProperties(ForRent))
+    }
 return (
     <div className='container-fluid p-0 NewProperties'>
             <div className="row">
@@ -24,7 +39,7 @@ return (
                     </div>
                     <div  className="col-12 d-flex gap-5 justify-content-center flex-wrap">
                         {ForRentSuccess && ForRent.slice(0, 6).map((item : apiData ) => {
-                            return <Link style={{ textDecoration: 'none' ,color:'black'}} key={item.id} to='/' className="col-3 d-flex flex-column align-items-center ">
+                            return <Link onClick={() => handlePropertyClick(item)} style={{ textDecoration: 'none' ,color:'black'}} key={item.id} to={`/properties/${item.title}`} className="col-3 d-flex flex-column align-items-center ">
                                 <div  className="ImgCon rounded overflow-hidden">
                                     <img className="img-fluid h-100 w-100" alt="img" src={item.coverPhoto.url } />
                                 </div>
@@ -58,7 +73,7 @@ return (
                         })}
                     </div>
 
-                <StyledLink className="col-1 p-2 d-flex justify-content-center align-items-center rounded align-self-center mt-5"  to='/'>Show more</StyledLink>
+                <StyledLink onClick={()=>handlePurpose()} className="col-1 p-2 d-flex justify-content-center align-items-center rounded align-self-center mt-5"  to='/properties'>Show more</StyledLink>
                 </WrapperSection>
             </div>
     </div>

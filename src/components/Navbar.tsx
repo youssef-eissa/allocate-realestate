@@ -22,6 +22,7 @@ const dispatch=useDispatch()
     const Progref=useRef<HTMLDivElement>(null)
     const [scrolled, setScroll] = useState<number>(0)
     function handleScrollNavBar() {
+        
         const currentScroll = window.scrollY
         if (currentScroll>scrolled+100&& ref.current) {
             ref.current.style.transform = 'translateY(-100%)'

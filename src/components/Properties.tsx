@@ -7,10 +7,18 @@ import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlin
 import BedOutlinedIcon from '@mui/icons-material/BedOutlined';
 import BathtubOutlinedIcon from '@mui/icons-material/BathtubOutlined';
 import { Link } from 'react-router-dom'
+import { setProperty } from "./redux/property";
+import { useDispatch } from 'react-redux'
 
 function Properties() {
+    const dispatch = useDispatch()
     const purpose = useSelector((state: { properties: { purpose: string } }) => state.properties.purpose)
     const PropertiesArray = useSelector((state: { properties: { array: apiData[] } }) => state.properties.array)
+
+     function handlePropertyClick(item: apiData) {
+        dispatch(setProperty(item))
+        window.scrollTo(0, 0)
+    }
 
 return (
     <motion.div
@@ -29,8 +37,10 @@ return (
         <div className='row'>
             <div  className="col-12 d-flex gap-5 my-5 justify-content-center flex-wrap">
                         { PropertiesArray.map((item : apiData ) => {
-                            return <Link style={{ textDecoration: 'none' ,color:'black'}} key={item.id} to='/' className="col-3 d-flex flex-column align-items-center ">
-                                <div  className="ImgCon rounded overflow-hidden">
+                            return <Link onClick={() => handlePropertyClick(item)} style={{ textDecoration: 'none' ,color:'black'}} key={item.id} to={`/properties/${item.title}`} className="col-3 d-flex flex-column align-items-center ">
+                                <div className="ImgCon rounded overflow-hidden
+                                position-relative">
+                                    {purpose==='Properties'&&<div style={{backgroundColor:'crimson',color:'white'}} className='col-4 p-2 text-center position-absolute bottom-0 start-0'>{ item.purpose.toUpperCase()}</div>}
                                     <img className="img-fluid h-100 w-100" alt="img" src={item.coverPhoto.url } />
                                 </div>
                                 <div className="col-12 my-4 itemTitle pb-3">

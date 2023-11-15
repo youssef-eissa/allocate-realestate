@@ -1,0 +1,29 @@
+.property .imgCon{
+    height: 600px ;
+}
+.property .propertyInfo h2{
+    font-family: 'Oswald', sans-serif;
+    font-weight: lighter;
+}
+.property .propertyInfo .price{
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    color: crimson;
+    font-weight: 500;
+}
+.property .created{
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 100;
+    color: #2B2B2B;
+}
+.property .propInfo{
+    font-family: 'Oswald', sans-serif;
+    font-size: 25px;
+    font-weight: 300;
+}
+.property .category{
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 100;
+}

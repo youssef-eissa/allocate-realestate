@@ -13,16 +13,18 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { propertiesReducer } from './components/redux/properties';
+import { PropertySliceReducer } from './components/redux/property';
 
 const queryClient = new QueryClient();
 const persistConfig = {
   key: 'root',
   version: 1,
-  whitelist: [],
+  whitelist: ['properties','property'],
   storage,
 };
 const reducer = combineReducers({
-  properties:propertiesReducer 
+  properties: propertiesReducer,
+  property: PropertySliceReducer
 })
 const PersistReducer = persistReducer(persistConfig, reducer);
 

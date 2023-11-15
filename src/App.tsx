@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Properties from "./components/Properties";
+import Property from "./components/Property";
 
 
 function App() {
@@ -53,10 +54,11 @@ const {data:ForSale,isFetching,isSuccess}=useQuery({
         <Route path="/" element={<Home ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]} isFetching={isFetching} isSuccess={isSuccess} ForRentSuccess={ForRentSuccess} />} />
         <Route path='/about' element={<About/> } />
         <Route path='/contact' element={<Contact />} />
-        <Route path="/properties" element={<Properties />}/>
+        <Route path="/properties" element={<Properties />} />
+        <Route path='/properties/:propertyName' element={<Property />}/>
       </Routes>
       <ContactUsSection />
-      <Footer/>
+      <Footer ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]}/>
     </div>
   );
 }
