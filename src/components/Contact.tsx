@@ -19,10 +19,10 @@ function Contact() {
             </StyledPageHead>
             </div>
             <div className='row my-3'>
-                <div className='col-12 d-flex my-5 p-0'>
-                    <h1 className='col-4 d-flex justify-content-center align-items-center'>Our Office</h1>
-                    <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: '300', fontSize: '20px' }} className='col-4 d-flex justify-content-center align-items-center'>Polaris Mall, North Street 90, New Cairo 1, Egypt</div>
-                    <div className='col-4  d-flex align-items-center flex-column'>
+                <div className='col-12 d-flex flex-md-row flex-column my-5 p-0'>
+                    <h1 className='col-md-4 col-12 d-flex justify-content-center align-items-center'>Our Office</h1>
+                    <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: '300', fontSize: '20px' }} className='col-md-4 col-12 my-4 my-md-0 d-flex justify-content-center align-items-center'>Polaris Mall, North Street 90, New Cairo 1, Egypt</div>
+                    <div className='col-md-4 col-12 d-flex align-items-center flex-column'>
                         <Link className='col-6 d-flex justify-content-center align-items-center mb-3' style={{ textDecoration: 'none', color: 'black',fontFamily: 'Oswald, sans-serif',fontSize: '20px' }} to='mailto:mail@example.com'>mail@example.com</Link>
                         <Link className='col-6 d-flex justify-content-center align-items-center' style={{ textDecoration: 'none', color: 'black' ,fontFamily: 'Oswald, sans-serif',fontSize: '20px'}} to='tel:123456789'>+20 123 456 789</Link>
                     </div>

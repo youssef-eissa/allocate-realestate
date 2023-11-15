@@ -35,9 +35,9 @@ return (
             </StyledPageHead>
         </div>
         <div className='row'>
-            <div  className="col-12 d-flex gap-5 my-5 justify-content-center flex-wrap">
+            <div  className="col-12 d-flex flex-md-row flex-column gap-5 my-5 justify-content-center flex-wrap">
                         { PropertiesArray.map((item : apiData ) => {
-                            return <Link onClick={() => handlePropertyClick(item)} style={{ textDecoration: 'none' ,color:'black'}} key={item.id} to={`/properties/${item.title}`} className="col-3 d-flex flex-column align-items-center ">
+                            return <Link onClick={() => handlePropertyClick(item)} style={{ textDecoration: 'none' ,color:'black'}} key={item.id} to={`/properties/${item.title}`} className="col-md-3 col-12 d-flex flex-column align-items-center ">
                                 <div className="ImgCon rounded overflow-hidden
                                 position-relative">
                                     {purpose==='Properties'&&<div style={{backgroundColor:'crimson',color:'white'}} className='col-4 p-2 text-center position-absolute bottom-0 start-0'>{ item.purpose.toUpperCase()}</div>}

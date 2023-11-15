@@ -22,3 +22,15 @@
 .about .acheivements{
     background-color: whitesmoke;
 }
+
+@media  (max-width: 768px) {
+    .about .headAbout {
+        font-family: 'Oswald', sans-serif;
+        font-size: 20px;
+        position: relative;
+        text-transform: uppercase;
+    }
+    .about .headAbout::before {
+    display: none;
+        }
+}

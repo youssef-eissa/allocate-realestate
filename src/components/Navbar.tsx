@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { setPurpose, resetProperties, setProperties } from './redux/properties'
 import { apiData } from './types/apiTypes'
+import TemporaryDrawer from './MUI/Drawer'
 
 
 type TNavBar={
@@ -66,18 +67,21 @@ return (
     <div ref={ref} className='container-fluid navBar py-2'>
         <div  className='row d-flex justify-content-center'>
             <div className='col-10 d-flex justify-content-between p-0'>
-                <Link onClick={()=>window.scrollTo(0,0)} to='/' className='col-3 LogoBox d-flex'>
+                <Link onClick={()=>window.scrollTo(0,0)} to='/' className='col-3 LogoBox d-flex justify-content-center'>
                     <img src={logo} alt="logo" className='img-fluid ' />
-                    <div className='col-7 d-flex flex-column justify-content-end CompanyName'>
+                    <div className='col-7 d-none d-md-flex flex-column justify-content-end CompanyName'>
                         <span className='col-12'>Allocate</span>
                         <span className='col-12'>Real Estate Consultancy</span>
                     </div>
                 </Link>
-                <div className='col-6 d-flex justify-content-around align-items-center'>
+                <div className='col-6 d-none d-md-flex justify-content-around align-items-center'>
                     <Link onClick={()=>window.scrollTo(0,0)} style={location.pathname==='/'?{color:'crimson'}:{color:'white'}} to='/' className='col-3 toPage'>Home</Link>
                     <Link onClick={() => handlePurpose()} style={location.pathname==='/properties'?{color:'crimson'}:{color:'white'}} to='/properties' className='col-3 toPage'>Properties</Link>
                     <Link onClick={()=>window.scrollTo(0,0)} style={location.pathname==='/about'?{color:'crimson'}:{color:'white'}} to='/about' className='col-3 toPage'>About</Link>
-                    <Link onClick={()=>window.scrollTo(0,0)} style={location.pathname==='/contact'?{color:'crimson'}:{color:'white'}} to='/contact' className='col-3 toPage'>Contact</Link>
+                    <Link onClick={() => window.scrollTo(0, 0)} style={location.pathname === '/contact' ? { color: 'crimson' } : { color: 'white' }} to='/contact' className='col-3 toPage'>Contact</Link>
+                </div>
+                <div className='col-3 d-md-none d-flex align-items-center justify-content-end'>
+                <TemporaryDrawer ForSale={ForSale} ForRent={ForRent}/>
                 </div>
             </div>
             <div className='col-12 scrollBarBG'>

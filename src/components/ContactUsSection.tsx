@@ -34,19 +34,19 @@ function ContactUsSection() {
 return (
     <div className='container-fluid contactUsSection overflow-hidden p-0'>
         <div className='row'>
-            <div className='col-12 p-2 d-flex justify-content-between'>
-                <WrapperSection className='col-5 d-flex flex-column align-items-center'>
+            <div className='col-12 p-2 d-flex flex-md-row flex-column justify-content-between'>
+                <WrapperSection className='col-md-5 col-12 d-flex flex-column align-items-center'>
                     <div className="col-12 text-center SectionTitle ">
             <div style={{color:"white"}} className="title col-12">FIND YOUR NEXT HOME</div>
                     </div>
-                    <p className='col-6 mt-4'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias necessitatibus at accusantium sed, reprehenderit amet voluptatibus vitae natus et, molestiae ipsam fuga exercitationem velit, beatae hic dolorem autem excepturi sint.</p>
+                    <p className='col-md-6 col-8 text-center mt-4'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias necessitatibus at accusantium sed, reprehenderit amet voluptatibus vitae natus et, molestiae ipsam fuga exercitationem velit, beatae hic dolorem autem excepturi sint.</p>
                 </WrapperSection>
-                <WrapperSection className='col-6 d-flex flex-column align-items-center'>
+                <WrapperSection className='col-md-6 col-12 d-flex flex-column align-items-center'>
                     <div className="col-12 SectionTitle ">
             <div style={{color:"white"}} className="title d-flex col-12">Get In Touch</div>
                     </div>
                     <form onSubmit={handleSubmitForm} className='col-12 mt-5 row-gap-4 d-flex flex-wrap justify-content-between'>
-                        <div className='col-5 d-flex flex-column'>
+                        <div className='col-md-5 col-12 d-flex flex-column'>
                             <label className='col-12' htmlFor='firstname'>First Name<span style={{color:'red'}}>*</span></label>
                             <input
                                 value={values.Firstname}
@@ -59,7 +59,7 @@ return (
                             />
                             {touched.Firstname && errors.Firstname&& <p className='col-12' style={{color:'red'}}>{errors.Firstname}</p>}
                         </div>
-                        <div className='col-5 d-flex flex-column'>
+                        <div className='col-md-5 col-12 d-flex flex-column'>
                             <label className='col-12' htmlFor='lastname'>Last Name</label>
                             <input
                                 value={values.Lastname}

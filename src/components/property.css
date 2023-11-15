@@ -27,3 +27,25 @@
     font-size: 20px;
     font-weight: 100;
 }
+@media (max-width: 768px) {
+    .property .imgCon{
+        height: 400px ;
+    }
+    .property .propertyInfo h2{
+        font-family: 'Oswald', sans-serif;
+        font-weight: lighter;
+        font-size: 20px;
+    }
+    .property .propertyInfo .price{
+        font-family: 'Oswald', sans-serif;
+        font-size: 15px;
+        color: crimson;
+        font-weight: 500;
+    }
+    .property .created{
+        font-family: 'Oswald', sans-serif;
+        font-size: 15px;
+        font-weight: 100;
+        color: #2B2B2B;
+    }
+}

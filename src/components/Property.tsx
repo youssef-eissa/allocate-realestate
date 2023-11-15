@@ -16,7 +16,7 @@ function Property() {
     const createdData = date.toFormat('dd-MM-yyyy');
 
 return (
-        <motion.div className='container-fluid property'>
+        <motion.div className='container-fluid property '>
         <div className='row'>
             <StyledPageHead className='col-12 p-0 d-flex flex-column justify-content-center align-items-center' background={headBG}>
                 <div className="overlay"></div>
@@ -30,8 +30,6 @@ return (
                 <div className='col-12 my-3 price'>{property?.price.toLocaleString('en-US', { style: 'currency', currency: 'AED', maximumFractionDigits: 0 })} {property.purpose === 'for-rent' && '/Month'}</div>
                 <div className='col-12 d-flex category mb-3'>
                     Category : {property?.category.map((category: any,i:number) => {
-                        
-                        
                         return <div key={category.id} className='col-auto mx-1'>{category.name} {i < property?.category.length - 1 && '|'} </div>
                     })}
                 </div>
@@ -39,23 +37,23 @@ return (
                 <div className='col-12 imgCon'>
                     <img alt="img" src={property.coverPhoto.url} className='img-fluid w-100 h-100'/>
                 </div>
-                <div className='col-12 d-flex mt-4 flex-wrap'>
-                    <div className='col-3 d-flex align-items-center flex-column'>
+                <div className='col-12 d-flex flex-md-row flex-column my-md-0 my-4 mt-md-4  flex-wrap'>
+                    <div className='col-md-3  col-12 d-flex align-items-center flex-column'>
                         <BedOutlinedIcon  sx={{ fontSize: '50px', color: '#80808040' }} />
                         <div className='col-12 my-2 propInfo text-center'>Rooms</div>
                         <div style={{fontSize:'20px'}} className='col-12 text-center'>{property.rooms}</div>
                     </div>
-                    <div className='col-3 d-flex align-items-center flex-column'>
+                    <div className='col-md-3 my-4 my-md-0 col-12 d-flex align-items-center flex-column'>
                         <BathtubOutlinedIcon  sx={{ fontSize: '50px', color: '#80808040' }} />
                         <div className='col-12 my-2 propInfo text-center'>Baths</div>
                         <div style={{fontSize:'20px'}} className='col-12 text-center'>{property.baths}</div>
                     </div>
-                    <div className='col-3 d-flex align-items-center flex-column'>
+                    <div className='col-md-3 my-4 my-md-0 col-12 d-flex align-items-center flex-column'>
                         <CheckBoxOutlineBlankOutlinedIcon  sx={{ fontSize: '50px', color: '#80808040' }} />
                         <div className='col-12 my-2 propInfo text-center'>sqft</div>
                         <div style={{fontSize:'20px'}} className='col-12 text-center'>{property.area.toFixed(0)} m</div>
                     </div>
-                    <div className='col-3 d-flex align-items-center flex-column'>
+                    <div className='col-md-3 my-4 my-md-0 col-12 d-flex align-items-center flex-column'>
                         <LocationOnIcon  sx={{ fontSize: '50px', color: '#80808040' }} />
                         <div className='col-12 my-2 propInfo text-center'>Location</div>
                         <div className='col-12 d-flex justify-content-center location'>

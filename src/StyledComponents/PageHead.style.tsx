@@ -35,4 +35,9 @@ position: relative;
     position:relative;
     z-index: 1;
 }
+@media  (max-width: 600px) {
+    & h2{
+    font-size: 30px ;
+}
+}
 `

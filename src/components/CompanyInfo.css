@@ -2,3 +2,19 @@
     font-family: 'Oswald', sans-serif;
     font-size: 30px;
 }
+.CompanyInfo .icons{
+    color: crimson;
+    font-size: 80px;
+}
+
+@media  (max-width: 768px) {
+    .CompanyInfo p {
+        font-family: 'Oswald', sans-serif;
+        font-size: 20px;
+    }
+    .CompanyInfo .icons{
+        color: crimson;
+        font-size: 50px;
+    }
+    
+}

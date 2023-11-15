@@ -39,9 +39,9 @@ function SaleNewProperties({ ForSale, isFetching, isSuccess }: TNewProperties) {
                         <div className="title col-12">NEW PROPERTIES</div>
                         <div className="col-12 purposeText text-center">For Sale</div>
                     </div>
-                    <div  className="col-12 d-flex gap-5 justify-content-center flex-wrap">
+                    <div  className="col-12 d-flex flex-md-row flex-column gap-5 justify-content-center flex-wrap">
                         {isSuccess && ForSale.slice(0, 6).map((item : apiData ) => {
-                            return <Link onClick={() => handlePropertyClick(item)} style={{ textDecoration: 'none' ,color:'black'}} key={item.id} to={`/properties/${item.title}`} className="col-3 d-flex flex-column align-items-center ">
+                            return <Link onClick={() => handlePropertyClick(item)} style={{ textDecoration: 'none' ,color:'black'}} key={item.id} to={`/properties/${item.title}`} className="col-md-3 col-12 d-flex flex-column align-items-center ">
                                 <div  className="ImgCon rounded overflow-hidden">
                                     <img className="img-fluid h-100 w-100" alt="img" src={item.coverPhoto.url } />
                                 </div>
@@ -75,7 +75,7 @@ function SaleNewProperties({ ForSale, isFetching, isSuccess }: TNewProperties) {
                         })}
                     </div>
 
-                <StyledLink onClick={()=>handlePurpose()} className="col-1 p-2 d-flex justify-content-center align-items-center rounded align-self-center mt-5"  to='/properties'>Show more</StyledLink>
+                <StyledLink onClick={()=>handlePurpose()} className="col-md-1 col-5 p-2 d-flex justify-content-center align-items-center rounded align-self-center mt-5"  to='/properties'>Show more</StyledLink>
                 </WrapperSection>
             </div>
     </div>

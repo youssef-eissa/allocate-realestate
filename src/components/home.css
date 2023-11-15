@@ -24,3 +24,21 @@
     font-size: 72px;
     font-weight: 500;
 }
+.typeAnimation{
+    font-family: 'Oswald', sans-serif;
+    font-size: 60px;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .typeAnimation{
+        font-size: 40px;
+    }
+    .homeLadingText span {
+        font-size: 12px;
+    }
+    .BuyAndRent .ImgCon {
+        height: 300px;
+    }
+    
+}

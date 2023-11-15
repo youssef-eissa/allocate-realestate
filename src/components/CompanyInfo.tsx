@@ -12,19 +12,19 @@ function CompanyInfo() {
           <div className="col-12 text-center SectionTitle mb-">
             <div className="title col-12">YOUR DREAM HOUSE IS ONE STEP AWAY!</div>
           </div>
-          <div className="col-12 d-flex mt-5">
-            <div className="col-4  d-flex flex-column align-items-center">
-              <CallIcon  sx={{ fontSize: "80px", color: "crimson" }} />
+          <div className="col-12 d-flex flex-md-row row-gap-3 flex-column mt-5">
+            <div className="col-md-4 col-12 d-flex flex-column align-items-center">
+              <CallIcon className='icons'/>
               <p className="col-12 text-center my-3">Call Us</p>
               <Link style={{ textDecoration: "none", color: "black", }} to='tel:123-456-7890'>123-456-7890</Link>
             </div>
-            <div className="col-4  d-flex flex-column align-items-center">
-              <LocationOnOutlinedIcon  sx={{ fontSize: "80px", color: "crimson" }} />
+            <div className="col-md-4 col-12  d-flex flex-column align-items-center">
+              <LocationOnOutlinedIcon  className='icons' />
               <p className="col-12 text-center my-3">Find Us</p>
               <Link target='_blank' style={{ textDecoration: "none", color: "black", }} to='https://maps.app.goo.gl/BZmY79tjFSYCbUL3A' className='col-12 text-center'>Polaris Mall, North Street 90, New Cairo 1, Egypt</Link>
             </div>
-            <div className="col-4  d-flex flex-column align-items-center">
-              <EmailOutlinedIcon  sx={{ fontSize: "80px", color: "crimson" }} />
+            <div className="col-md-4 col-12 d-flex flex-column align-items-center">
+              <EmailOutlinedIcon  className='icons' />
               <p className="col-12 text-center my-3">Email Us</p>
               <Link style={{ textDecoration: "none", color: "black", }} to='mailto:mail@example.com' className='col-12 text-center'>mail@example.com</Link>
             </div>

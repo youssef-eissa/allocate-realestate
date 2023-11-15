@@ -32,15 +32,15 @@ return (
                 <motion.div
                     initial={{ x: '-100vw' }}
                     animate={{ x: 0 }}
-                    transition={{duration: 1.5,bounce: 0.3,type:'spring'} } className='col-12 d-flex justify-content-between textbox pb-3'>
-                    <div className='col-2 headAbout d-flex align-self-start'>Why Allocate?</div>
-                    <p className='col-10'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti distinctio tenetur debitis aperiam ab temporibus soluta vel possimus maxime quidem rem non quam nesciunt eum placeat quo, reprehenderit necessitatibus beatae? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod, consectetur dicta eligendi quia aut quo minus harum iste deserunt. Voluptate omnis suscipit beatae non fuga optio magni veritatis labore eveniet.
+                    transition={{duration: 1.5,bounce: 0.3,type:'spring'} } className='col-12 d-flex d-flex flex-md-row flex-column justify-content-between textbox pb-3'>
+                    <div className='col-md-2 col-12 headAbout d-flex justify-content-center justify-content-md-start align-self-start'>Why Allocate?</div>
+                    <p className='col-md-10 col-12'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti distinctio tenetur debitis aperiam ab temporibus soluta vel possimus maxime quidem rem non quam nesciunt eum placeat quo, reprehenderit necessitatibus beatae? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod, consectetur dicta eligendi quia aut quo minus harum iste deserunt. Voluptate omnis suscipit beatae non fuga optio magni veritatis labore eveniet.
                     Error distinctio ullam qui maiores asperiores. Doloribus, dolore fuga omnis illo accusamus maxime et magnam quam temporibus voluptas nesciunt corrupti cum corporis dolores nostrum sed, fugiat inventore distinctio repellendus commodi?
                     Accusantium, animi molestias quis temporibus esse molestiae quos, quam velit magnam vel eius, labore mollitia corrupti dolor maiores est distinctio eligendi earum! Distinctio illo consequuntur odio, ratione quasi ea exercitationem.</p>
                 </motion.div>
-                <motion.div initial={{ x: '100vw' }} animate={{ x: 0 }} transition={{duration: 1.5,bounce: 0.3,type:'spring'} } className='col-12 d-flex justify-content-between textbox pb-3'>
-                    <div className='col-2 headAbout d-flex align-self-start'>MISSION</div>
-                    <p className='col-10'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti distinctio tenetur debitis aperiam ab temporibus soluta vel possimus maxime quidem rem non quam nesciunt eum placeat quo, reprehenderit necessitatibus beatae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda iure a dolor provident nisi aliquam molestias, ipsa ut aperiam beatae porro tempora repellat velit accusantium voluptatum voluptates mollitia voluptate sapiente?
+                <motion.div initial={{ x: '100vw' }} animate={{ x: 0 }} transition={{duration: 1.5,bounce: 0.3,type:'spring'} } className='col-12 justify-content-between d-flex flex-md-row flex-column textbox pb-3'>
+                    <div className='col-md-2 col-12 headAbout d-flex justify-content-center justify-content-md-start align-self-start'>MISSION</div>
+                    <p className='col-md-10 col-12'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti distinctio tenetur debitis aperiam ab temporibus soluta vel possimus maxime quidem rem non quam nesciunt eum placeat quo, reprehenderit necessitatibus beatae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda iure a dolor provident nisi aliquam molestias, ipsa ut aperiam beatae porro tempora repellat velit accusantium voluptatum voluptates mollitia voluptate sapiente?
                     Ducimus accusantium, molestiae molestias magnam corrupti autem reiciendis eius ex repellendus quam suscipit magni exercitationem neque fuga sequi consectetur id deleniti voluptatem. Facilis blanditiis obcaecati qui quis, quisquam porro earum!
                     Numquam, deleniti excepturi? Unde magni iusto, accusantium numquam fuga veniam, ipsam quis corrupti fugiat est quasi totam eius cum nesciunt nostrum? Veniam quae sint esse, reiciendis natus corporis? Quia, id.</p>
                 </motion.div>
@@ -48,9 +48,9 @@ return (
                     initial={{ x: '-100vw' }}
                     animate={{ x: 0 }}
                     transition={{duration: 1.5,bounce: 0.3,type:'spring'} }
-                    className='col-12 d-flex justify-content-between textbox pb-3'>
-                    <div className='col-2 headAbout d-flex align-self-start'>Vision</div>
-                    <p className='col-10'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti distinctio tenetur debitis aperiam ab temporibus soluta vel possimus maxime quidem rem non quam nesciunt eum placeat quo, reprehenderit necessitatibus beatae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda iure a dolor provident nisi aliquam molestias, ipsa ut aperiam beatae porro tempora repellat velit accusantium voluptatum voluptates mollitia voluptate sapiente?
+                    className='col-12 d-flex flex-md-row flex-column justify-content-between textbox pb-3'>
+                    <div className='col-md-2 col-12 headAbout d-flex justify-content-center justify-content-md-start align-self-start'>Vision</div>
+                    <p className='col-md-10 col-12'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti distinctio tenetur debitis aperiam ab temporibus soluta vel possimus maxime quidem rem non quam nesciunt eum placeat quo, reprehenderit necessitatibus beatae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda iure a dolor provident nisi aliquam molestias, ipsa ut aperiam beatae porro tempora repellat velit accusantium voluptatum voluptates mollitia voluptate sapiente?
                     Ducimus accusantium, molestiae molestias magnam corrupti autem reiciendis eius ex repellendus quam suscipit magni exercitationem neque fuga sequi consectetur id deleniti voluptatem. Facilis blanditiis obcaecati qui quis, quisquam porro earum!
                     Numquam, deleniti excepturi? Unde magni iusto, accusantium numquam fuga veniam, ipsam quis corrupti fugiat est quasi totam eius cum nesciunt nostrum? Veniam quae sint esse, reiciendis natus corporis? Quia, id.</p>
                 </motion.div>

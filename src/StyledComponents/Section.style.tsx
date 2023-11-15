@@ -17,4 +17,14 @@ padding: 100px;
     color: #091D35;
     font-weight: 500;
 }
+@media (max-width: 768px) {
+    padding: 10px;
+    & .SectionTitle .title{
+    font-family: 'Oswald', sans-serif;
+    font-weight: lighter;
+    letter-spacing: 3px;
+    font-size: 15px;
+    color: #2B2B2B;
+}
+}
 `
