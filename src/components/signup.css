@@ -1,0 +1,23 @@
+.signup form input[type='text']:focus,
+.signup form input[type='email']:focus,
+.signup form input[type='password']:focus{
+    outline: none;
+}
+
+.signup form input[type='text'],
+.signup form input[type='email'],
+.signup form input[type='password'] {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+.signup form label,
+.typeClass{
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+

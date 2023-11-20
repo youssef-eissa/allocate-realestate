@@ -14,6 +14,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { propertiesReducer } from './components/redux/properties';
 import { PropertySliceReducer } from './components/redux/property';
+import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 const queryClient = new QueryClient();
 const persistConfig = {

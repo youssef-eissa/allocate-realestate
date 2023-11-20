@@ -50,7 +50,7 @@ function BuyAndRent({ ForSale, ForRent }: TBuyAndRent) {
     }
 
 return (
-    <div ref={ref} className='container-fluid mt-4 mt-md-0 p-0'>
+    <div  ref={ref} className='container-fluid mt-4 mt-md-0 p-0'>
         <motion.div animate={animation} className='row BuyAndRent'>
                 <WrapperSection className='col-12 d-flex flex-column justify-content-center '>
                 <div className='col-12 text-center SectionTitle mb-5'>
