@@ -66,7 +66,7 @@ const dispatch=useDispatch()
 return (
     <div ref={ref} className='container-fluid navBar py-2'>
         <div  className='row d-flex justify-content-center'>
-            <div className='col-10 d-flex justify-content-between p-0'>
+            <div className='col-11 d-flex justify-content-between p-0'>
                 <Link onClick={()=>window.scrollTo(0,0)} to='/' className='col-3 LogoBox d-flex justify-content-center'>
                     <img src={logo} alt="logo" className='img-fluid ' />
                     <div className='col-7 d-none d-md-flex flex-column justify-content-end CompanyName'>
@@ -80,6 +80,9 @@ return (
                     <Link onClick={()=>window.scrollTo(0,0)} style={location.pathname==='/about'?{color:'crimson'}:{color:'white'}} to='/about' className='col-3 toPage'>About</Link>
                     <Link onClick={() => window.scrollTo(0, 0)} style={location.pathname === '/contact' ? { color: 'crimson' } : { color: 'white' }} to='/contact' className='col-3 toPage'>Contact</Link>
                 </div>
+                <Link onClick={()=>window.scrollTo(0,0)} to='/signin' className='col-1 toPage d-flex justify-content-center align-items-center'>
+                    Sign In
+                </Link>
                 <div className='col-3 d-md-none d-flex align-items-center justify-content-end'>
                 <TemporaryDrawer ForSale={ForSale} ForRent={ForRent}/>
                 </div>

@@ -1,0 +1,36 @@
+.signin form label{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+}
+.signin form input[type="text"]:focus{
+outline: none;
+}
+
+.signin form input[type="text"],
+.signin form input[type="password"] {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    outline: none;
+}
+
+.signin .type{
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #80808078;
+}
+.signin .type:hover{
+    color: crimson !important;
+    background-color: #80808036 !important;
+}
+
+.newuser{
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+   
+}

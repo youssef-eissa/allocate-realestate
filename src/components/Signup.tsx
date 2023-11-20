@@ -12,6 +12,8 @@ import { StyledPageHead } from '../StyledComponents/PageHead.style'
 import headBG from '../assets/contactImg.webp'
 import './signup.css'
 import { FallingLines } from "react-loader-spinner";
+import { motion } from 'framer-motion'
+
 
 
 
@@ -115,11 +117,17 @@ function Signup() {
     
 
     return (
-        <div className="container-fluid signup">
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 2,type: "spring" }}
+            className="container-fluid signup">
+            
             <div className="row">
                 <StyledPageHead className='col-12 p-0 d-flex flex-column justify-content-center align-items-center' background={headBG}>
                 <div className="overlay"></div>
-                <div className='col-12 title text-center'>Welcome to allocate</div>
+                <div className='col-12 title text-center'>Join allocate family</div>
                 <h2 className='col-12 text-center'>Sign Up</h2>
             </StyledPageHead>
             </div>
@@ -230,7 +238,7 @@ function Signup() {
                     Account created successfully
                 </Alert>
                 </Snackbar>
-    </div>
+    </motion.div>
 )
 }
 

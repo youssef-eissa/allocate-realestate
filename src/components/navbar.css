@@ -42,3 +42,9 @@ font-size: 12px;
 .toPage:hover{
     color: crimson !important;
 }
+.toLogin{
+    color: white;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    transition: 0.3s;
+}

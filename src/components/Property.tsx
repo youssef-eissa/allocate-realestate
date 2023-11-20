@@ -16,7 +16,12 @@ function Property() {
     const createdData = date.toFormat('dd-MM-yyyy');
 
 return (
-        <motion.div className='container-fluid property '>
+    <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 2,type: "spring" }}
+        className='container-fluid property '>
         <div className='row'>
             <StyledPageHead className='col-12 p-0 d-flex flex-column justify-content-center align-items-center' background={headBG}>
                 <div className="overlay"></div>

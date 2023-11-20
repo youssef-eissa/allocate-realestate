@@ -16,17 +16,19 @@ import { propertiesReducer } from './components/redux/properties';
 import { PropertySliceReducer } from './components/redux/property';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-toastify/dist/ReactToastify.min.css';
+import { userSliceReducer } from './components/redux/user';
 
 const queryClient = new QueryClient();
 const persistConfig = {
   key: 'root',
   version: 1,
-  whitelist: ['properties','property'],
+  whitelist: ['properties','property','user'],
   storage,
 };
 const reducer = combineReducers({
   properties: propertiesReducer,
-  property: PropertySliceReducer
+  property: PropertySliceReducer,
+  user: userSliceReducer
 })
 const PersistReducer = persistReducer(persistConfig, reducer);
 

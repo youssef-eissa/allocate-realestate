@@ -10,3 +10,9 @@ export const CreateAdmin =  (name:string,username:string,email:string,password:s
         type
     })
 }
+
+export const getAdmin =  (username:string):Promise<any>  => {
+    return axios.post(`https://allocatedb.vercel.app/admins/${username}`, {
+        username,
+    })
+}
