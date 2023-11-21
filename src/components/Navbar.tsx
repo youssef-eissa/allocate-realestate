@@ -74,7 +74,6 @@ function Navbar({ ForSale, ForRent }: TNavBar) {
         window.scrollTo(0, 0)
         navigate('/')
     }
-    console.log(user);
     
 return (
     <div ref={ref} className='container-fluid navBar py-2'>

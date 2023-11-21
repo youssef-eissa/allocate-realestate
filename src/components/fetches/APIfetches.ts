@@ -13,7 +13,7 @@ export const ForSaleFetch =  () => {
         categoryExternalID: '4'
         },
         headers: {
-    'X-RapidAPI-Key': '8586c2a384mshc7f700af09616d5p12c26bjsnc70a2d73397e',
+     'X-RapidAPI-Key': '1ae9f2515dmshb73a3ac83e01facp151aefjsnc2bd78905b21',
     'X-RapidAPI-Host': 'bayut.p.rapidapi.com'
     }
     })
@@ -32,7 +32,7 @@ export const ForRentFetch =  () => {
     categoryExternalID: '4'
         },
     headers: {
-    'X-RapidAPI-Key': '8586c2a384mshc7f700af09616d5p12c26bjsnc70a2d73397e',
+    'X-RapidAPI-Key': '1ae9f2515dmshb73a3ac83e01facp151aefjsnc2bd78905b21',
     'X-RapidAPI-Host': 'bayut.p.rapidapi.com'
     }
     })
