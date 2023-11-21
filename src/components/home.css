@@ -29,6 +29,12 @@
     font-size: 60px;
     font-weight: 500;
 }
+.notfound{
+    height: 500px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 72px;
+    font-weight: 500;
+}
 
 @media (max-width: 768px) {
     .typeAnimation{
@@ -40,5 +46,7 @@
     .BuyAndRent .ImgCon {
         height: 300px;
     }
-    
+    .notfound{
+        font-size: 40px;
+    }
 }

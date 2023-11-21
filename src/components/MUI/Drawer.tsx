@@ -4,11 +4,14 @@ import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import { Sling as Hamburger } from 'hamburger-react'
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import { setPurpose, resetProperties, setProperties } from '../redux/properties'
 import { apiData } from '../types/apiTypes'
+import { setLogout, resetUser } from '../redux/user';
+import FallbackAvatars from './Avatar';
+
 
 
 
@@ -21,6 +24,8 @@ type TDrawer={
 
 }
 export default function TemporaryDrawer({ ForSale, ForRent }: TDrawer) {
+        const isLogged = useSelector((state: { user: { islogged: any } }) => state.user.islogged)
+    const navigate=useNavigate()
     const location = useLocation()
     const dispatch = useDispatch()
     const allProperties = ForSale.concat(ForRent)
@@ -59,7 +64,15 @@ const list   = (anchor: Anchor) => (
         <Link onClick={()=>window.scrollTo(0,0)} style={location.pathname==='/'?{color:'crimson'}:{color:'white'}} to='/' className='col-12 text-center toPage'>Home</Link>
         <Link onClick={() => handlePurpose()} style={location.pathname==='/properties'?{color:'crimson'}:{color:'white'}} to='/properties' className='col-12 text-center  toPage'>Properties</Link>
         <Link onClick={()=>window.scrollTo(0,0)} style={location.pathname==='/about'?{color:'crimson'}:{color:'white'}} to='/about' className='col-12 text-center toPage'>About</Link>
-        <Link onClick={() => window.scrollTo(0, 0)} style={location.pathname === '/contact' ? { color: 'crimson' } : { color: 'white' }} to='/contact' className='col-12 toPage text-center'>Contact</Link>
+            <Link onClick={() => window.scrollTo(0, 0)} style={location.pathname === '/contact' ? { color: 'crimson' } : { color: 'white' }} to='/contact' className='col-12 toPage text-center'>Contact</Link>
+            {isLogged?<div onClick={()=>handleSignout()}  className='col-12 text-center toPage d-flex justify-content-center align-items-center'>
+                    Sign Out
+                </div>:<Link onClick={()=>window.scrollTo(0,0)} to='/signin' className='col-12 text-center toPage d-flex justify-content-center align-items-center'>
+                    Sign In
+            </Link>}
+            {isLogged && <div className='col-12 d-flex justify-content-center toPage'>
+            <FallbackAvatars/>
+            </div>}
     </List>
    
     </Box>
@@ -70,6 +83,14 @@ const list   = (anchor: Anchor) => (
         dispatch(resetProperties())
         dispatch(setProperties(allProperties))
     }
+    function handleSignout(){
+        dispatch(setLogout())
+        dispatch(resetUser())
+        window.scrollTo(0, 0)
+        navigate('/')
+    }
+    
+
 
 return (
     <div>

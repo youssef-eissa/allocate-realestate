@@ -136,7 +136,7 @@ function Signup() {
                     <div className="col-12 d-flex ">
                         <div className="col-3 mb-3 typeClass">Type</div>
                         <div className="col-8 d-flex align-items-center  mb-3">
-                        <label className="col-auto" htmlFor="user">user</label>
+                        <label className="col-auto" htmlFor="user">User</label>
                         <input
                         type="radio"
                         name="UserType"
@@ -148,7 +148,7 @@ function Signup() {
                         className="col-2 "
                         checked={UserType === 'user'}
                         />
-                        <label htmlFor="admin">admin</label>
+                        <label htmlFor="admin">Admin</label>
                         <input
                         type="radio"
                         name="UserType"

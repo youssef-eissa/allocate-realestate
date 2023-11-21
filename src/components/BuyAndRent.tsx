@@ -17,9 +17,10 @@ type TBuyAndRent={
 }
 
 function BuyAndRent({ ForSale, ForRent }: TBuyAndRent) {
-    const user = useSelector((state: { user: { user: any } }) => state.user.user)
     const isLogged = useSelector((state: { user: { islogged: any } }) => state.user.islogged)
-    console.log(user);
+    const user=useSelector((state:{user:{user:any}})=>state.user.user)
+console.log(user);
+
     
     const dispatch=useDispatch()
     const { ref, inView } = useInView({

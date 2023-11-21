@@ -10,14 +10,17 @@ const userReducer = createSlice({
         setUser: (state, action) => {
             state.user = action.payload
         },
-        setLogin: (state, action) => {
+        setLogin: (state) => {
             state.islogged = true
         },
         setLogout: (state) => {
             state.islogged = false
+        },
+        resetUser: (state) => {
+            state.user = {}
         }
     }
 })
 
-export const { setUser, setLogin, setLogout } = userReducer.actions
+export const { setUser, setLogin, setLogout,resetUser } = userReducer.actions
 export const userSliceReducer= userReducer.reducer

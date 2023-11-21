@@ -10,6 +10,8 @@ import { getAdmin } from './fetches/adminsAPI'
 import { FallingLines } from "react-loader-spinner";
 import { useNavigate } from 'react-router-dom'
 import { StyledLink } from '../StyledComponents/Link.style'
+import { useSelector, useDispatch } from 'react-redux'
+import { setUser, setLogin, } from './redux/user'
 
 
 
@@ -17,10 +19,14 @@ type Data = {
     username:string,
 }
 function Signin() {
+    const dispatch=useDispatch()
     const navigate=useNavigate()
     const [username,setUsername]=useState<string>('')
     const [password,setPassword]=useState<string>('')
     const [type, setType] = useState<string>('')
+    const islogged = useSelector((state: { user: { islogged: any } }) => state.user.islogged)
+    console.log(islogged);
+    
     
     const { mutate:GetUserData,isPending:UserPending,error:userError,data:userData } = useMutation({
     mutationFn: (data: Data) => {
@@ -42,17 +48,20 @@ function Signin() {
     },
     
     });
-console.log(userData?.data[0].password);
     
     useEffect(() => {
         if (userData?.data[0].password === password) {
             navigate('/')
+            dispatch(setUser(userData?.data[0]))
+            dispatch(setLogin())
         } else if (adminData?.data[0].password === password) {
             navigate('/')
+            dispatch(setUser(adminData?.data[0]))
+            dispatch(setLogin())
         }
     }, [userData?.data[0].password,password,adminData?.data[0].password])
     
-    function handleSubmit(e: React.FormEvent<HTMLFormElement>){ 
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault()
         if (type === 'user') {
             GetUserData({
@@ -83,7 +92,7 @@ return (
         <div className='row d-flex justify-content-center my-5'>
             <div className='col-10 d-flex flex-column align-items-center'>
                 <form onSubmit={handleSubmit} className='col-12 d-flex flex-column align-items-center'>
-                    <div className='col-6 mb-3'>
+                    <div className='col-md-6 col-12 mb-3'>
                         <label className='col-12 mb-3' htmlFor='username'>Username</label>
                         <input
                         id='username'
@@ -95,7 +104,7 @@ return (
                         />
                         {userError|| adminError ? <p className='text-danger mt-1'>Invalid Username</p>:null}
                     </div>
-                        <div className='col-6'>
+                        <div className='col-md-6 col-12'>
                         <label className='col-12 mb-3' htmlFor='password'>Password</label>
                         <input
                         id='password'
@@ -106,7 +115,7 @@ return (
                         onChange={e=>{setPassword(e.target.value)}}
                         />
                     </div>
-                    <div className='col-6 d-flex mt-3 '>
+                    <div className='col-6 d-flex flex-md-row flex-column align-items-center mt-3 '>
                     <div style={type==='user'?{backgroundColor:'#80808078',color:'crimson'}:{backgroundColor:'white',color:'#80808078'}} onClick={()=>{setType('user')}} className='col-4 type rounded d-flex p-2 justify-content-center'>
                         User
                     </div>
@@ -117,15 +126,15 @@ return (
                         Admin
                     </div>
                 </div>
-                    <Button type='submit' className='col-2 d-flex justify-content-center p-2 rounded mt-3'>Sign in {UserPending||AdminPending ?<div className="col-2 ms-3"> <FallingLines color={'white'} width="35" /> </div>: null}</Button>
+                    <Button type='submit' className='col-md-2 col-6 d-flex justify-content-center p-2 rounded mt-3'>Sign in {UserPending||AdminPending ?<div className="col-2 ms-3"> <FallingLines color={'white'} width="35" /> </div>: null}</Button>
                 </form>
 
-                <div className='col-6 d-flex my-4 justify-content-between'>
+                <div className='col-6 d-flex flex-md-row flex-column align-items-center row-gap-2 my-4 justify-content-between'>
                     <div className='col-6 d-flex newuser justify-content-start align-items-center'>
                         New User?
                     </div>
                     <div className='col-6 d-flex justify-content-end align-items-center'>
-                        <StyledLink className='col-6 p-2 rounded d-flex justify-content-center align-items-center' to='/signup'>Sign up</StyledLink>
+                        <StyledLink className='col-md-6 col-12 p-2 rounded d-flex justify-content-center align-items-center' to='/signup'>Sign up</StyledLink>
                     </div>
                 </div>
                 

@@ -1,12 +1,16 @@
 import './navbar.css'
 import logo from '../assets/theLogo.jpeg'
 import { Link } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
+import { useLocation,useNavigate } from 'react-router-dom'
 import { useEffect, useState, useRef } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import { setPurpose, resetProperties, setProperties } from './redux/properties'
 import { apiData } from './types/apiTypes'
 import TemporaryDrawer from './MUI/Drawer'
+import FallbackAvatars from './MUI/Avatar'
+import { setLogout ,resetUser} from './redux/user';
+
+
 
 
 type TNavBar={
@@ -15,9 +19,10 @@ type TNavBar={
     }
 function Navbar({ ForSale, ForRent }: TNavBar) {
     const allProperties = ForSale.concat(ForRent)
-    
-    
-const dispatch=useDispatch()
+    const isLogged = useSelector((state: { user: { islogged: any } }) => state.user.islogged)
+    const user = useSelector((state: { user: { user: any } }) => state.user.user)
+    const navigate=useNavigate()
+    const dispatch=useDispatch()
     const location = useLocation()
     const ref=useRef<HTMLDivElement>(null)
     const Progref=useRef<HTMLDivElement>(null)
@@ -63,6 +68,14 @@ const dispatch=useDispatch()
         dispatch(resetProperties())
         dispatch(setProperties(allProperties))
     }
+    function handleSignout(){
+        dispatch(setLogout())
+        dispatch(resetUser())
+        window.scrollTo(0, 0)
+        navigate('/')
+    }
+    console.log(user);
+    
 return (
     <div ref={ref} className='container-fluid navBar py-2'>
         <div  className='row d-flex justify-content-center'>
@@ -80,9 +93,17 @@ return (
                     <Link onClick={()=>window.scrollTo(0,0)} style={location.pathname==='/about'?{color:'crimson'}:{color:'white'}} to='/about' className='col-3 toPage'>About</Link>
                     <Link onClick={() => window.scrollTo(0, 0)} style={location.pathname === '/contact' ? { color: 'crimson' } : { color: 'white' }} to='/contact' className='col-3 toPage'>Contact</Link>
                 </div>
-                <Link onClick={()=>window.scrollTo(0,0)} to='/signin' className='col-1 toPage d-flex justify-content-center align-items-center'>
+                {isLogged ? <div className='col-md-3  d-md-flex d-none align-items-center'>
+                   {user?.type==='admin' &&  <Link onClick={()=>window.scrollTo(0,0)} to='/dashboard' className='col-3 toPage'>Dashboard</Link>}
+                    <div className='col-4 d-flex justify-content-center align-items-center'>
+                    <FallbackAvatars/>
+                    </div>
+                    <div onClick={()=>handleSignout()} style={{cursor:'pointer'}} className='col-4 text-center toPage d-flex justify-content-center align-items-center'>
+                    Sign Out
+                </div>
+                </div>:<Link onClick={()=>window.scrollTo(0,0)} to='/signin' className='col-3 toPage d-md-flex d-none justify-content-center align-items-center'>
                     Sign In
-                </Link>
+                </Link>}
                 <div className='col-3 d-md-none d-flex align-items-center justify-content-end'>
                 <TemporaryDrawer ForSale={ForSale} ForRent={ForRent}/>
                 </div>

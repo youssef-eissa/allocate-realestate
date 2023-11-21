@@ -13,9 +13,15 @@ import Properties from "./components/Properties";
 import Property from "./components/Property";
 import Signup from "./components/Signup";
 import Signin from "./components/Signin";
+import Notfound from "./components/Notfound";
+import { useSelector } from 'react-redux'
+import Dashboard from "./components/Dashboard";
+
 
 
 function App() {
+    const user=useSelector((state:{user:{user:any}})=>state.user.user)
+
 const {data:ForSale,isFetching,isSuccess}=useQuery({
   queryKey: ["ForSale"],
   queryFn: ForSaleFetch,
@@ -60,6 +66,8 @@ const {data:ForSale,isFetching,isSuccess}=useQuery({
         <Route path='/properties/:propertyName' element={<Property />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="*" element={<Notfound />} />
+        {user?.type==='admin' && <Route path="/dashboard" element={<Dashboard/>}/>}
       </Routes>
       <ContactUsSection />
       <Footer ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]}/>
