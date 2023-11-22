@@ -142,8 +142,7 @@ function Signup() {
                         name="UserType"
                         id="user"
                         value='user'
-                    onChange={(e) => { setUserType(e.target.value); console.log(UserType)
-                                }}
+                        onChange={(e) => { setUserType(e.target.value)}}
                         onBlur={handleBlur}
                         className="col-2 "
                         checked={UserType === 'user'}
@@ -154,8 +153,7 @@ function Signup() {
                         name="UserType"
                         id="admin"
                         value='admin'
-                        onChange={(e) => { setUserType(e.target.value); console.log(UserType)
-                        }}
+                        onChange={(e) => { setUserType(e.target.value)}}
                         onBlur={handleBlur}
                         className="col-2 "
                         checked={UserType === 'admin'}
@@ -171,7 +169,7 @@ function Signup() {
                             id="secretKey"
                             value={SecretKey}
                             onChange={e=>{setSecretKey(e.target.value)}}
-                            className="col-12 mb-3"
+                            className="col-12 mb-3 form-control"
                             />
                             <div className="col-12 text-danger">{ SecretKeyError}</div>
                         </div>
@@ -185,7 +183,7 @@ function Signup() {
                         value={values.name}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                            className="col-12 mb-3"
+                        className="col-12 mb-3 form-control"
                         />
                         {touched.name && errors.name && <p className="text-danger">{errors.name}</p>}
                     </div>
@@ -197,8 +195,8 @@ function Signup() {
                         id="username"
                         value={values.username}
                         onChange={handleChange}
-                            onBlur={handleBlur}
-                            className="col-12 mb-3"
+                        onBlur={handleBlur}
+                        className="col-12 mb-3 form-control"
                         />
                         {touched.username && errors.username && <p className="text-danger">{errors.username}</p>}
                     </div>
@@ -210,8 +208,8 @@ function Signup() {
                         id="emailSignup"
                         value={values.email}
                         onChange={handleChange}
-                            onBlur={handleBlur}
-                            className="col-12 mb-3"
+                        onBlur={handleBlur}
+                        className="col-12 mb-3 form-control"
                         />
                         {touched.email && errors.email && <p className="text-danger">{errors.email}</p>}
                     </div>
@@ -223,8 +221,8 @@ function Signup() {
                         id="password"
                         value={values.password}
                         onChange={handleChange}
-                            onBlur={handleBlur}
-                            className="col-12 mb-3"
+                        onBlur={handleBlur}
+                        className="col-12 mb-3 form-control"
                         />
                         {touched.password && errors.password && <p className="text-danger">{errors.password}</p>}
                     </div>

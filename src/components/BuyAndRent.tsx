@@ -18,8 +18,6 @@ type TBuyAndRent={
 
 function BuyAndRent({ ForSale, ForRent }: TBuyAndRent) {
     const isLogged = useSelector((state: { user: { islogged: any } }) => state.user.islogged)
-    const user=useSelector((state:{user:{user:any}})=>state.user.user)
-console.log(user);
 
     
     const dispatch=useDispatch()

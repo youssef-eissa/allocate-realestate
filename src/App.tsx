@@ -16,11 +16,14 @@ import Signin from "./components/Signin";
 import Notfound from "./components/Notfound";
 import { useSelector } from 'react-redux'
 import Dashboard from "./components/Dashboard";
+import Sell from "./components/Sell";
 
 
 
 function App() {
     const user=useSelector((state:{user:{user:any}})=>state.user.user)
+    const isLogged = useSelector((state: { user: { islogged: any } }) => state.user.islogged)
+
 
 const {data:ForSale,isFetching,isSuccess}=useQuery({
   queryKey: ["ForSale"],
@@ -67,6 +70,7 @@ const {data:ForSale,isFetching,isSuccess}=useQuery({
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="*" element={<Notfound />} />
+        {isLogged && <Route path="/sell" element={<Sell/> } />}
         {user?.type==='admin' && <Route path="/dashboard" element={<Dashboard/>}/>}
       </Routes>
       <ContactUsSection />
