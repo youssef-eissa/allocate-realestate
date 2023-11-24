@@ -35,6 +35,32 @@
     font-size: 72px;
     font-weight: 500;
 }
+.search{
+    position: relative;
+}
+.search input::placeholder{
+    font-family: 'Oswald', sans-serif;
+}
+.search input{
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+}
+.search .results{
+    background-color: white;
+    overflow-y: auto;
+    position: absolute;
+}
+.search .results .links{
+    text-decoration: none ;
+    color: black;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+}
+.search .results .links:hover{
+    color: crimson;
+
+}
+
 
 @media (max-width: 768px) {
     .typeAnimation{

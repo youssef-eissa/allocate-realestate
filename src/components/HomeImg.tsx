@@ -5,6 +5,7 @@ import {  useDispatch } from 'react-redux'
 import { apiData } from './types/apiTypes'
 import { setPurpose, resetProperties, setProperties } from './redux/properties'
 import './home.css'
+import SearchBar from './SearchBar';
 
 
 type THomeImg={
@@ -12,8 +13,10 @@ type THomeImg={
     ForRent:apiData[]
 }
 
+
 function HomeImg({ForSale,ForRent}:THomeImg) {
-const dispatch=useDispatch()
+    const dispatch = useDispatch()
+    
 
     function Texttype(){
         return (
@@ -53,7 +56,10 @@ return (
             <Texttype/>
                     </div>
                     <span className='text-center col-12'>EXCLUSIVELY BY Allocate</span>
-                    <StyledLink onClick={()=>handlePurpose()} className='col-md-3 col-6  rounded p-2 text-center mt-5' to='/properties'>Explore</StyledLink>
+                    <StyledLink onClick={() => handlePurpose()} className='col-md-3 col-6  rounded p-2 text-center mt-5' to='/properties'>Explore</StyledLink>
+                    <div className='col-md-12 col-9 mt-3'>
+                        <SearchBar sales={ForSale} rents={ForRent}/>
+                    </div>
                 </div>
             </div>
         </div>
