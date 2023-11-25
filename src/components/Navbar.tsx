@@ -1,23 +1,42 @@
 import './navbar.css'
 import logo from '../assets/theLogo.jpeg'
 import { Link } from 'react-router-dom'
-import { useLocation,useNavigate } from 'react-router-dom'
-import { useEffect, useState, useRef } from 'react'
+import { useLocation,useNavigate, } from 'react-router-dom'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import { setPurpose, resetProperties, setProperties } from './redux/properties'
 import { apiData } from './types/apiTypes'
 import TemporaryDrawer from './MUI/Drawer'
 import FallbackAvatars from './MUI/Avatar'
-import { setLogout ,resetUser} from './redux/user';
+import { setLogout, resetUser } from './redux/user';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 
 
-
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+        props,
+        ref,
+    ) {
+        return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+    });
 
 type TNavBar={
     ForSale:apiData[]
-    ForRent:apiData[]
+    ForRent: apiData[]
+    users:any
     }
-function Navbar({ ForSale, ForRent }: TNavBar) {
+function Navbar({ ForSale, ForRent, users }: TNavBar) {
+        const [NotificationOpen, setNotificationOpen] = useState<boolean>(false);
+        const map = users?.map((user: any) => user.sell).flat().length
+        const handleClick = () => {
+    setNotificationOpen(true);
+        };
+    const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+        return;
+    }
+    setNotificationOpen(false);
+    };
     const allProperties = ForSale.concat(ForRent)
     const isLogged = useSelector((state: { user: { islogged: any } }) => state.user.islogged)
     const user = useSelector((state: { user: { user: any } }) => state.user.user)
@@ -43,7 +62,7 @@ function Navbar({ ForSale, ForRent }: TNavBar) {
             setScroll(currentScroll)
             
         }
-
+        
     }
     useEffect(() => {
         window.addEventListener('scroll', handleScrollNavBar)
@@ -75,6 +94,7 @@ function Navbar({ ForSale, ForRent }: TNavBar) {
         navigate('/')
     }
     
+    
 return (
     <div ref={ref} className='container-fluid navBar py-2'>
         <div  className='row d-flex justify-content-center'>
@@ -89,11 +109,11 @@ return (
                 <div className='col-6 d-none d-md-flex justify-content-around align-items-center'>
                     <Link onClick={()=>window.scrollTo(0,0)} style={location.pathname==='/'?{color:'crimson'}:{color:'white'}} to='/' className='col-3 toPage'>Home</Link>
                     <Link onClick={() => handlePurpose()} style={location.pathname==='/properties'?{color:'crimson'}:{color:'white'}} to='/properties' className='col-3 toPage'>Properties</Link>
-                    <Link onClick={()=>window.scrollTo(0,0)} style={location.pathname==='/about'?{color:'crimson'}:{color:'white'}} to='/about' className='col-3 toPage'>About</Link>
-                    <Link onClick={() => window.scrollTo(0, 0)} style={location.pathname === '/contact' ? { color: 'crimson' } : { color: 'white' }} to='/contact' className='col-3 toPage'>Contact</Link>
+                    <Link  onClick={()=>window.scrollTo(0,0)} style={location.pathname==='/about'?{color:'crimson'}:{color:'white'}} to='/about'  className='col-3 toPage'>About</Link>
+                    <Link  onClick={() => window.scrollTo(0, 0)} style={location.pathname === '/contact' ? { color: 'crimson' } : { color: 'white' }} to={{pathname:'/contact'}} className='col-3 toPage'>Contact</Link>
                 </div>
                 {isLogged ? <div className='col-md-3  d-md-flex d-none align-items-center'>
-                   {user?.type==='admin' &&  <Link onClick={()=>window.scrollTo(0,0)} to='/dashboard' className='col-3 toPage'>Dashboard</Link>}
+                    {user?.type === 'admin' && <Link style={location.pathname === '/dashboard' ? { color: 'crimson' } : { color: 'white' }} onClick={() => { window.scrollTo(0, 0); }} to='/dashboard' className='col-3 toPage'>Dashboard</Link>}
                     <div className='col-4 d-flex justify-content-center align-items-center'>
                     <FallbackAvatars/>
                     </div>
@@ -104,13 +124,18 @@ return (
                     Sign In
                 </Link>}
                 <div className='col-3 d-md-none d-flex align-items-center justify-content-end'>
-                <TemporaryDrawer ForSale={ForSale} ForRent={ForRent}/>
+                <TemporaryDrawer user={user} ForSale={ForSale} ForRent={ForRent}/>
                 </div>
             </div>
             <div className='col-12 scrollBarBG'>
                 <div ref={Progref} className='col-12 scrollBarBGProgress'></div>
             </div>
         </div>
+          <Snackbar  open={NotificationOpen}  autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    Account created successfully
+                </Alert>
+                </Snackbar>
     </div>
 )
 }

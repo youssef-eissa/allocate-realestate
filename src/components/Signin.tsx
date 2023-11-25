@@ -8,9 +8,9 @@ import { useMutation } from '@tanstack/react-query'
 import { getUser } from './fetches/usersAPi'
 import { getAdmin } from './fetches/adminsAPI'
 import { FallingLines } from "react-loader-spinner";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,useLocation } from 'react-router-dom'
 import { StyledLink } from '../StyledComponents/Link.style'
-import { useSelector, useDispatch } from 'react-redux'
+import {  useDispatch } from 'react-redux'
 import { setUser, setLogin, } from './redux/user'
 
 
@@ -24,8 +24,6 @@ function Signin() {
     const [username,setUsername]=useState<string>('')
     const [password,setPassword]=useState<string>('')
     const [type, setType] = useState<string>('')
-    const islogged = useSelector((state: { user: { islogged: any } }) => state.user.islogged)
-    console.log(islogged);
     
     
     const { mutate:GetUserData,isPending:UserPending,error:userError,data:userData } = useMutation({
@@ -46,17 +44,20 @@ function Signin() {
     onSuccess: (data) => {
         console.log(data);
     },
-    
     });
-    
+
     useEffect(() => {
-        if (userData?.data[0].password === password) {
+        if (userData?.data[0].password === password && location.hash==='') {
             navigate('/')
             dispatch(setUser(userData?.data[0]))
             dispatch(setLogin())
         } else if (adminData?.data[0].password === password) {
             navigate('/')
             dispatch(setUser(adminData?.data[0]))
+            dispatch(setLogin())
+        } else if (userData?.data[0].password === password && location.hash==='#sell') {
+            navigate('/sell')
+            dispatch(setUser(userData?.data[0]))
             dispatch(setLogin())
         }
     }, [userData?.data[0].password,password,adminData?.data[0].password])
@@ -74,6 +75,7 @@ function Signin() {
         }
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     }
+    const location=useLocation()
 
 return (
     <motion.div

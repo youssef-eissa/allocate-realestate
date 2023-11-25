@@ -1,10 +1,38 @@
 import { StyledPageHead } from '../StyledComponents/PageHead.style'
 import headBG from '../assets/contactImg.webp'
 import { useSelector } from 'react-redux'
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+
+import React, { useEffect, useState,useCallback } from 'react';
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+        props,
+        ref,
+    ) {
+        return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+    });
 
 
-function Dashboard() {
-    const user=useSelector((state:{user:{user:any}})=>state.user.user)
+type TDashboard = {
+    users:any
+}
+function Dashboard({users}:TDashboard) {
+    const [NotificationOpen, setNotificationOpen] = useState<boolean>(false);
+    const map = users.map((user: any) => user.sell).flat().length
+    const [count,setcount] = useState(0)
+    const user = useSelector((state: { user: { user: any } }) => state.user.user)
+        const handleClick = () => {
+    setNotificationOpen(true);
+        };
+    const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+        return;
+    }
+    setNotificationOpen(false);
+    };
+
+    
+    
 
     return (
         <div className='container-fluid'>
@@ -15,6 +43,11 @@ function Dashboard() {
                 <h2 className='col-12 text-center'>Admin {user?.name.toUpperCase()}</h2>
                 </StyledPageHead>
             </div>
+            <Snackbar  open={NotificationOpen}  autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    Account created successfully
+                </Alert>
+                </Snackbar>
     </div>
 )
 }

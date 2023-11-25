@@ -17,13 +17,19 @@ import Notfound from "./components/Notfound";
 import { useSelector } from 'react-redux'
 import Dashboard from "./components/Dashboard";
 import Sell from "./components/Sell";
+import { GetTheUser } from "./components/fetches/usersAPi";
 
 
 
 function App() {
+
     const user=useSelector((state:{user:{user:any}})=>state.user.user)
     const isLogged = useSelector((state: { user: { islogged: any } }) => state.user.islogged)
-
+const {data:users}=useQuery({
+  queryKey: ["GetTheUser"],
+  queryFn: GetTheUser,
+  select: (data) => data.data
+})
 
 const {data:ForSale,isFetching,isSuccess}=useQuery({
   queryKey: ["ForSale"],
@@ -57,21 +63,21 @@ const {data:ForSale,isFetching,isSuccess}=useQuery({
   }
 
 
-
   return (
     <div className="container-fluid p-0">
-        <Navbar ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]} />
+      <Navbar users={ users as any} ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]} />
       <Routes>
-        <Route path="/" element={<Home ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]} isFetching={isFetching} isSuccess={isSuccess} ForRentSuccess={ForRentSuccess} />} />
+        <Route path="/" element={<Home  ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]} isFetching={isFetching} isSuccess={isSuccess} ForRentSuccess={ForRentSuccess} />} />
         <Route path='/about' element={<About/> } />
         <Route path='/contact' element={<Contact />} />
         <Route path="/properties" element={<Properties />} />
         <Route path='/properties/:propertyName' element={<Property />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/signin" element={<Signin />} />
         <Route path="*" element={<Notfound />} />
         {isLogged && <Route path="/sell" element={<Sell/> } />}
-        {user?.type==='admin' && <Route path="/dashboard" element={<Dashboard/>}/>}
+        {user?.type === 'admin' && <Route path="/dashboard" element={<Dashboard users={ users as any} />}/>}
       </Routes>
       <ContactUsSection />
       <Footer ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]}/>

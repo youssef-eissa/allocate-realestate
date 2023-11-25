@@ -27,3 +27,6 @@ export const getUser =  (username:string,):Promise<any>  => {
 export const putUser =  (id:number,values:any,user:User,img:any):Promise<any>  => {
     return axios.put(`https://allocatedb.vercel.app/users/${id}`,{...user,name:user.name,username:user.username,email:user.email,password:user.password,sell:values,propertyImg:img} )
 }
+export const GetTheUser =  ():Promise<any>  => {
+return axios.get(`https://allocatedb.vercel.app/users`)
+}

@@ -20,10 +20,11 @@ type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 type TDrawer={
     ForSale:apiData[]
-    ForRent:apiData[]
+    ForRent: apiData[]
+    user:any
 
 }
-export default function TemporaryDrawer({ ForSale, ForRent }: TDrawer) {
+export default function TemporaryDrawer({ ForSale, ForRent,user }: TDrawer) {
         const isLogged = useSelector((state: { user: { islogged: any } }) => state.user.islogged)
     const navigate=useNavigate()
     const location = useLocation()
@@ -65,6 +66,7 @@ const list   = (anchor: Anchor) => (
         <Link onClick={() => handlePurpose()} style={location.pathname==='/properties'?{color:'crimson'}:{color:'white'}} to='/properties' className='col-12 text-center  toPage'>Properties</Link>
         <Link onClick={()=>window.scrollTo(0,0)} style={location.pathname==='/about'?{color:'crimson'}:{color:'white'}} to='/about' className='col-12 text-center toPage'>About</Link>
             <Link onClick={() => window.scrollTo(0, 0)} style={location.pathname === '/contact' ? { color: 'crimson' } : { color: 'white' }} to='/contact' className='col-12 toPage text-center'>Contact</Link>
+            {isLogged && user?.type==='admin' && <Link style={location.pathname === '/dashboard' ? { color: 'crimson' } : { color: 'white' }} onClick={() => { window.scrollTo(0, 0); }} to='/dashboard' className='col-12 text-center toPage'>Dashboard</Link>}
             {isLogged?<div onClick={()=>handleSignout()}  className='col-12 text-center toPage d-flex justify-content-center align-items-center'>
                     Sign Out
                 </div>:<Link onClick={()=>window.scrollTo(0,0)} to='/signin' className='col-12 text-center toPage d-flex justify-content-center align-items-center'>

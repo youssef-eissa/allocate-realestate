@@ -8,7 +8,7 @@ import { Button } from '../StyledComponents/Button.style';
 import { putUser } from './fetches/usersAPi';
 import { useMutation } from '@tanstack/react-query';
 import { useSelector } from 'react-redux'
-import { useState } from 'react';
+import {  useEffect, useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
@@ -62,7 +62,6 @@ function Sell() {
             baths: 0,
             area: 0,
             type: '',
-            
         },
         validationSchema: schema,
         onSubmit: (values) => {
@@ -72,17 +71,16 @@ function Sell() {
                 user: user,
                 img:Preview
             })
-            if (isSuccess) {
-                handleReset(values)
-                setPreview(null)
-            }
+            
         }
 
     })
+    
 
     function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
         handleSubmit()
+        
 
     }
     const {mutate,isSuccess,isPending}=useMutation({
@@ -104,6 +102,12 @@ function Sell() {
         }
     }
 
+    useEffect(() => {
+        if (isSuccess) {
+            handleReset(values)
+            setPreview(null)
+        }
+    }, [isSuccess,values,handleReset])
 
     return (
         <div className='container-fluid sell'>
