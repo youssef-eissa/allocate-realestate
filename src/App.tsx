@@ -61,6 +61,12 @@ const {data:ForSale,isFetching,isSuccess}=useQuery({
       </div>
     </div>
   }
+  const a = [2,3,5,6,4,3,2,9]
+  console.log(
+  a.sort((a, b) =>  b- a)
+  
+);
+
 
 
   return (
