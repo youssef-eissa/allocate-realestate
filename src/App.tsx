@@ -18,6 +18,7 @@ import { useSelector } from 'react-redux'
 import Dashboard from "./components/Dashboard";
 import Sell from "./components/Sell";
 import { GetTheUser } from "./components/fetches/usersAPi";
+import CalendarPage from "./components/CalendarPage";
 
 
 
@@ -61,11 +62,7 @@ const {data:ForSale,isFetching,isSuccess}=useQuery({
       </div>
     </div>
   }
-  const a = [2,3,5,6,4,3,2,9]
-  console.log(
-  a.sort((a, b) =>  b- a)
   
-);
 
 
 
@@ -73,7 +70,7 @@ const {data:ForSale,isFetching,isSuccess}=useQuery({
     <div className="container-fluid p-0">
       <Navbar users={ users as any} ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]} />
       <Routes>
-        <Route path="/" element={<Home  ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]} isFetching={isFetching} isSuccess={isSuccess} ForRentSuccess={ForRentSuccess} />} />
+        <Route  path="/" element={<Home  ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]} isFetching={isFetching} isSuccess={isSuccess} ForRentSuccess={ForRentSuccess} />} />
         <Route path='/about' element={<About/> } />
         <Route path='/contact' element={<Contact />} />
         <Route path="/properties" element={<Properties />} />
@@ -81,9 +78,14 @@ const {data:ForSale,isFetching,isSuccess}=useQuery({
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signin" element={<Signin />} />
-        <Route path="*" element={<Notfound />} />
-        {isLogged && <Route path="/sell" element={<Sell/> } />}
-        {user?.type === 'admin' && <Route path="/dashboard" element={<Dashboard users={ users as any} />}/>}
+        <Route  path="*" element={<Notfound />} />
+        
+        {isLogged && <Route path="/sell" element={<Sell />} />}
+        {user?.type === 'admin' && <Route path="/dashboard" element={<Dashboard users={users as any} />}>
+        <Route path="calendar" element={<CalendarPage />}/>
+        <Route path="calendarr" element={<Signup />}/>
+        </Route>}
+        
       </Routes>
       <ContactUsSection />
       <Footer ForSale={ForSale as apiData[]} ForRent={ForRent as apiData[]}/>

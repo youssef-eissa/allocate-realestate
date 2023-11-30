@@ -82,7 +82,6 @@ function Signup() {
     return CreateUser(data.name, data.username, data.email, data.password, data.type);
     },
     onSuccess: (data) => {
-        console.log(data);
         handleClick()
     },
     });

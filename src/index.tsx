@@ -17,6 +17,8 @@ import { PropertySliceReducer } from './components/redux/property';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { userSliceReducer } from './components/redux/user';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+
 
 const queryClient = new QueryClient();
 const persistConfig = {

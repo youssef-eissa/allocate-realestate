@@ -3,8 +3,11 @@ import headBG from '../assets/contactImg.webp'
 import { useSelector } from 'react-redux'
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
-
+import { Button } from '../StyledComponents/Button.style';
+import './dashboard.css'
 import React, { useEffect, useState } from 'react';
+import { Link ,Outlet,OutletProps} from 'react-router-dom';
+import CalendarPage from './CalendarPage';
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
         props,
         ref,
@@ -16,9 +19,11 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 type TDashboard = {
     users:any
 }
-function Dashboard({users}:TDashboard) {
+function Dashboard({ users }: TDashboard) {
+console.log(Outlet);
+    
     const [NotificationOpen, setNotificationOpen] = useState<boolean>(false);
-    const map = users.map((user: any) => user.sell).flat().length
+    const map = users?.map((user: any) => user.sell).flat().length
     const [count,setcount] = useState(0)
     const user = useSelector((state: { user: { user: any } }) => state.user.user)
         const handleClick = () => {
@@ -35,7 +40,7 @@ function Dashboard({users}:TDashboard) {
     
 
     return (
-        <div className='container-fluid'>
+        <div className='container-fluid '>
             <div className='row'>
                 <StyledPageHead className='col-12  d-flex flex-column justify-content-center align-items-center' background={headBG}>
                 <div className="overlay"></div>
@@ -43,13 +48,18 @@ function Dashboard({users}:TDashboard) {
                 <h2 className='col-12 text-center'>Admin {user?.name.toUpperCase()}</h2>
                 </StyledPageHead>
             </div>
-            <Snackbar  open={NotificationOpen}  autoHideDuration={6000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                    Account created successfully
-                </Alert>
-                </Snackbar>
+            
+                <div className='py-2'>
+                <CalendarPage/>
+                </div>
+            
     </div>
 )
 }
 
 export default Dashboard
+{/* <Snackbar  open={NotificationOpen}  autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    Account created successfully
+                </Alert>
+                </Snackbar> */}
